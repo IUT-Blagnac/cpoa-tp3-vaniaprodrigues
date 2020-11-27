@@ -1,67 +1,96 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-
-    <groupId>org.blagnac.cpoa</groupId>
-    <artifactId>TP3</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!--<maven.compiler.release>13</maven.compiler.release>-->
-    </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.6.0</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <encoding>UTF-8</encoding>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.0.0</version>
-                <executions>
-                <execution>
-                    <id>fix0</id>
-                    <phase>install</phase>
-                    <goals>
-                    <goal>exec</goal>
-                    </goals>
-                    <configuration>
-                    <executable>ruby</executable>
-                    <workingDirectory>tests</workingDirectory>
-                    <arguments>
-                        <argument>testfix0.rb</argument>
-                        <argument>../README.adoc</argument>
-                    </arguments>
-                    </configuration>
-                </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
-</project>
+@startuml
+class PizzaFromageStyleStrasbourg [[java:PizzaFromageStyleStrasbourg]] {
+	+PizzaFromageStyleStrasbourg()
+	#void couper()
+}
+class Pizza [[java:Pizza]] {
+}
+Pizza <|-- PizzaFromageStyleStrasbourg
+class PizzaPoivronStyleStrasbourg [[java:PizzaPoivronStyleStrasbourg]] {
+}
+class Pizza [[java:Pizza]] {
+}
+Pizza <|-- PizzaPoivronStyleStrasbourg
+class PizzeriaBrest [[java:PizzeriaBrest]] {
+	+PizzeriaBrest()
+}
+class Pizzeria [[java:Pizzeria]] {
+}
+Pizzeria <|-- PizzeriaBrest
+class PizzaFromageStyleBrest [[java:PizzaFromageStyleBrest]] {
+	+PizzaFromageStyleBrest()
+	#void couper()
+}
+class Pizza [[java:Pizza]] {
+}
+Pizza <|-- PizzaFromageStyleBrest
+abstract class Pizzeria [[java:Pizzeria]] {
+	#Pizza commanderPizza(String string)
+}
+class PizzaFactory [[java:PizzaFactory]] {
+}
+Pizzeria --> "1" PizzaFactory : PizzaFactory
+class PizzaPoivronStyleBrest [[java:PizzaPoivronStyleBrest]] {
+	+PizzaPoivronStyleBrest()
+	#void couper()
+}
+class Pizza [[java:Pizza]] {
+}
+Pizza <|-- PizzaPoivronStyleBrest
+class PizzeriaStrasbourg [[java:PizzeriaStrasbourg]] {
+	+PizzeriaStrasbourg()
+}
+class Pizzeria [[java:Pizzeria]] {
+}
+Pizzeria <|-- PizzeriaStrasbourg
+class PizzeriaFactory [[java:PizzeriaFactory]] {
+	~{static}PizzeriaFactory instance
+	+{static}PizzeriaFactory getInstance()
+	+Pizzeria creer(String type)
+}
+abstract class PizzaFactory [[java:PizzaFactory]] {
+	#{abstract}Pizza creerPizza(String type)
+}
+class PizzaGrecStyleBrest [[java:PizzaGrecStyleBrest]] {
+	+PizzaGrecStyleBrest()
+	#void couper()
+}
+class Pizza [[java:Pizza]] {
+}
+Pizza <|-- PizzaGrecStyleBrest
+abstract class Pizza [[java:Pizza]] {
+	#String nom
+	#String pate
+	#String sauce
+	#ArrayList<String> garnitures
+	#Pizza()
+	#void preparer()
+	#void cuire()
+	#void couper()
+	#void emballer()
+	#String getNom()
+}
+class PizzaFactoryStrasbourg [[java:PizzaFactoryStrasbourg]] {
+	~{static}PizzaFactoryStrasbourg instance
+	+{static}PizzaFactoryStrasbourg getInstance()
+	+Pizza creerPizza(String type)
+}
+class PizzaFactory [[java:PizzaFactory]] {
+}
+PizzaFactory <|-- PizzaFactoryStrasbourg
+class PizzaGrecStyleStrasbourg [[java:PizzaGrecStyleStrasbourg]] {
+	+PizzaGrecStyleStrasbourg()
+	#void couper()
+}
+class Pizza [[java:Pizza]] {
+}
+Pizza <|-- PizzaGrecStyleStrasbourg
+class PizzaFactoryBrest [[java:PizzaFactoryBrest]] {
+	~{static}PizzaFactoryBrest instance
+	+{static}PizzaFactoryBrest getInstance()
+	+Pizza creerPizza(String type)
+}
+class PizzaFactory [[java:PizzaFactory]] {
+}
+PizzaFactory <|-- PizzaFactoryBrest
+@enduml
