@@ -14,7 +14,7 @@ v20.1 {localdate}
 :baseURL: :baseURL: http://bit.ly/innopolis-patterns
 :github: https://github.com[GitHub]
 // Specific to GitHub
-ifdef::env-github[] 
+ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
 :important-caption: :heavy_exclamation_mark:
