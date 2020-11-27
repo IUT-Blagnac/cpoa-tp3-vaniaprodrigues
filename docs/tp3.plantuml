@@ -3,31 +3,31 @@ class PizzaFromageStyleStrasbourg [[java:PizzaFromageStyleStrasbourg]] {
 	+PizzaFromageStyleStrasbourg()
 	#void couper()
 }
-class Pizza [[java:Pizza]] {
+abstract class Pizza [[java:Pizza]] {
 }
 Pizza <|-- PizzaFromageStyleStrasbourg
 class PizzaPoivronStyleStrasbourg [[java:PizzaPoivronStyleStrasbourg]] {
 }
-class Pizza [[java:Pizza]] {
+abstract class Pizza [[java:Pizza]] {
 }
 Pizza <|-- PizzaPoivronStyleStrasbourg
 class PizzeriaBrest [[java:PizzeriaBrest]] {
 	+PizzeriaBrest()
 }
-class Pizzeria [[java:Pizzeria]] {
+abstract class Pizzeria [[java:Pizzeria]] {
 }
 Pizzeria <|-- PizzeriaBrest
 class PizzaFromageStyleBrest [[java:PizzaFromageStyleBrest]] {
 	+PizzaFromageStyleBrest()
 	#void couper()
 }
-class Pizza [[java:Pizza]] {
+abstract class Pizza [[java:Pizza]] {
 }
 Pizza <|-- PizzaFromageStyleBrest
 abstract class Pizzeria [[java:Pizzeria]] {
 	#Pizza commanderPizza(String string)
 }
-class PizzaFactory [[java:PizzaFactory]] {
+abstract class PizzaFactory [[java:PizzaFactory]] {
 }
 Pizzeria --> "1" PizzaFactory : PizzaFactory
 class PizzaPoivronStyleBrest [[java:PizzaPoivronStyleBrest]] {
@@ -40,7 +40,7 @@ Pizza <|-- PizzaPoivronStyleBrest
 class PizzeriaStrasbourg [[java:PizzeriaStrasbourg]] {
 	+PizzeriaStrasbourg()
 }
-class Pizzeria [[java:Pizzeria]] {
+abstract class Pizzeria [[java:Pizzeria]] {
 }
 Pizzeria <|-- PizzeriaStrasbourg
 class PizzeriaFactory [[java:PizzeriaFactory]] {
@@ -55,7 +55,7 @@ class PizzaGrecStyleBrest [[java:PizzaGrecStyleBrest]] {
 	+PizzaGrecStyleBrest()
 	#void couper()
 }
-class Pizza [[java:Pizza]] {
+abstract class Pizza [[java:Pizza]] {
 }
 Pizza <|-- PizzaGrecStyleBrest
 abstract class Pizza [[java:Pizza]] {
@@ -75,14 +75,14 @@ class PizzaFactoryStrasbourg [[java:PizzaFactoryStrasbourg]] {
 	+{static}PizzaFactoryStrasbourg getInstance()
 	+Pizza creerPizza(String type)
 }
-class PizzaFactory [[java:PizzaFactory]] {
+abstract class PizzaFactory [[java:PizzaFactory]] {
 }
 PizzaFactory <|-- PizzaFactoryStrasbourg
 class PizzaGrecStyleStrasbourg [[java:PizzaGrecStyleStrasbourg]] {
 	+PizzaGrecStyleStrasbourg()
 	#void couper()
 }
-class Pizza [[java:Pizza]] {
+abstract class Pizza [[java:Pizza]] {
 }
 Pizza <|-- PizzaGrecStyleStrasbourg
 class PizzaFactoryBrest [[java:PizzaFactoryBrest]] {
@@ -90,7 +90,7 @@ class PizzaFactoryBrest [[java:PizzaFactoryBrest]] {
 	+{static}PizzaFactoryBrest getInstance()
 	+Pizza creerPizza(String type)
 }
-class PizzaFactory [[java:PizzaFactory]] {
+abstract class PizzaFactory [[java:PizzaFactory]] {
 }
 PizzaFactory <|-- PizzaFactoryBrest
 @enduml
