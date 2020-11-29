@@ -1,0 +1,96 @@
+@startuml
+class PizzaFromageStyleStrasbourg [[java:PizzaFromageStyleStrasbourg]] {
+	+PizzaFromageStyleStrasbourg()
+	#void couper()
+}
+abstract class Pizza [[java:Pizza]] {
+}
+Pizza <|-- PizzaFromageStyleStrasbourg
+class PizzaPoivronStyleStrasbourg [[java:PizzaPoivronStyleStrasbourg]] {
+}
+abstract class Pizza [[java:Pizza]] {
+}
+Pizza <|-- PizzaPoivronStyleStrasbourg
+class PizzeriaBrest [[java:PizzeriaBrest]] {
+	+PizzeriaBrest()
+}
+abstract class Pizzeria [[java:Pizzeria]] {
+}
+Pizzeria <|-- PizzeriaBrest
+class PizzaFromageStyleBrest [[java:PizzaFromageStyleBrest]] {
+	+PizzaFromageStyleBrest()
+	#void couper()
+}
+abstract class Pizza [[java:Pizza]] {
+}
+Pizza <|-- PizzaFromageStyleBrest
+abstract class Pizzeria [[java:Pizzeria]] {
+	#Pizza commanderPizza(String string)
+}
+abstract class PizzaFactory [[java:PizzaFactory]] {
+}
+Pizzeria --> "1" PizzaFactory : PizzaFactory
+class PizzaPoivronStyleBrest [[java:PizzaPoivronStyleBrest]] {
+	+PizzaPoivronStyleBrest()
+	#void couper()
+}
+class Pizza [[java:Pizza]] {
+}
+Pizza <|-- PizzaPoivronStyleBrest
+class PizzeriaStrasbourg [[java:PizzeriaStrasbourg]] {
+	+PizzeriaStrasbourg()
+}
+abstract class Pizzeria [[java:Pizzeria]] {
+}
+Pizzeria <|-- PizzeriaStrasbourg
+class PizzeriaFactory [[java:PizzeriaFactory]] {
+	~{static}PizzeriaFactory instance
+	+{static}PizzeriaFactory getInstance()
+	+Pizzeria creer(String type)
+}
+abstract class PizzaFactory [[java:PizzaFactory]] {
+	#{abstract}Pizza creerPizza(String type)
+}
+class PizzaGrecStyleBrest [[java:PizzaGrecStyleBrest]] {
+	+PizzaGrecStyleBrest()
+	#void couper()
+}
+abstract class Pizza [[java:Pizza]] {
+}
+Pizza <|-- PizzaGrecStyleBrest
+abstract class Pizza [[java:Pizza]] {
+	#String nom
+	#String pate
+	#String sauce
+	#ArrayList<String> garnitures
+	#Pizza()
+	#void preparer()
+	#void cuire()
+	#void couper()
+	#void emballer()
+	#String getNom()
+}
+class PizzaFactoryStrasbourg [[java:PizzaFactoryStrasbourg]] {
+	~{static}PizzaFactoryStrasbourg instance
+	+{static}PizzaFactoryStrasbourg getInstance()
+	+Pizza creerPizza(String type)
+}
+abstract class PizzaFactory [[java:PizzaFactory]] {
+}
+PizzaFactory <|-- PizzaFactoryStrasbourg
+class PizzaGrecStyleStrasbourg [[java:PizzaGrecStyleStrasbourg]] {
+	+PizzaGrecStyleStrasbourg()
+	#void couper()
+}
+abstract class Pizza [[java:Pizza]] {
+}
+Pizza <|-- PizzaGrecStyleStrasbourg
+class PizzaFactoryBrest [[java:PizzaFactoryBrest]] {
+	~{static}PizzaFactoryBrest instance
+	+{static}PizzaFactoryBrest getInstance()
+	+Pizza creerPizza(String type)
+}
+abstract class PizzaFactory [[java:PizzaFactory]] {
+}
+PizzaFactory <|-- PizzaFactoryBrest
+@enduml
